@@ -6,6 +6,7 @@ import 'package:scoutingapp/src/pages/field_scouting.dart';
 import 'package:scoutingapp/src/settings/settings_view.dart';
 
 // ignore: must_be_immutable
+///creates a new [Drawer] widget populated with buttons created using the [drawer_button] class
 class Sidebar extends StatelessWidget {
   const Sidebar({super.key});
   @override

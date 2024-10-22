@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:scoutingapp/src/pages/data_page/data_page_graph_view.dart';
+import 'package:scoutingapp/src/pages/data_page_graph_view.dart';
 import 'package:scoutingapp/src/Pages/home_page.dart';
-import 'package:scoutingapp/src/pages/scouting_page/field_scouting.dart';
+import 'package:scoutingapp/src/pages/field_scouting.dart';
 
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';

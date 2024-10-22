@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:scoutingapp/src/drawer/sidebar.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class FieldScoutingPage extends StatefulWidget {
+  const FieldScoutingPage({super.key});
   // Set the name for the route used for page switching.
-  static const routeName = '/home_page';
+  static const routeName = '/field_scouting';
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<FieldScoutingPage> createState() => _FieldScoutingPageState();
 }
 
-Logger logWithStack = Logger(printer: PrettyPrinter());
-
-var log = Logger(
-  printer: PrettyPrinter(methodCount: 0),
-);
-
-class _HomePageState extends State<HomePage> {
+class _FieldScoutingPageState extends State<FieldScoutingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,11 +25,10 @@ class _HomePageState extends State<HomePage> {
                 icon: const Icon(Icons.menu));
           },
         ),
-        title: const Text('Home'),
+        title: const Text('Field scouting'),
       ),
       drawer: const Sidebar(), //New custom made drawer class.
-      body: const Placeholder()
+      body: const Placeholder(),
     );
   }
 }
-

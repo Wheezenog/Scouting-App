@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:scoutingapp/src/drawer/sidebar.dart';
+import 'package:scoutingapp/src/features/drawer/sidebar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
         ),
         title: const Text('Home'),
       ),
-      drawer: const Sidebar(), //New custom made drawer class.
+      drawer: const Sidebar(), // Custom made drawer class.
       body: const Placeholder()
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:scoutingapp/src/drawer/sidebar.dart';
+import 'package:logger/logger.dart';
+import 'package:scoutingapp/src/features/drawer/sidebar.dart';
 
 class FieldScoutingPage extends StatefulWidget {
   const FieldScoutingPage({super.key});
@@ -10,25 +11,28 @@ class FieldScoutingPage extends StatefulWidget {
   State<FieldScoutingPage> createState() => _FieldScoutingPageState();
 }
 
+var log = Logger(
+  printer: PrettyPrinter(methodCount: 0),
+);
+
 class _FieldScoutingPageState extends State<FieldScoutingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-                onPressed: () {
-                  // Open the drawer when icon button is clicked.
-                  Scaffold.of(context).openDrawer();
-                },
-                icon: const Icon(Icons.menu));
-          },
+        appBar: AppBar(
+          leading: Builder(
+            builder: (context) {
+              return IconButton(
+                  onPressed: () {
+                    // Open the drawer when icon button is clicked.
+                    Scaffold.of(context).openDrawer();
+                  },
+                  icon: const Icon(Icons.menu));
+            },
+          ),
+          title: const Text('Field scouting'),
         ),
-        title: const Text('Field scouting'),
-      ),
-      drawer: const Sidebar(), //New custom made drawer class.
-      body: const Placeholder(),
-    );
+        drawer: const Sidebar(), // Custom made drawer class.
+        body: const Placeholder());
   }
 }

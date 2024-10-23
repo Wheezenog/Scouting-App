@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scoutingapp/src/drawer/sidebar.dart';
+import 'package:scoutingapp/src/features/drawer/sidebar.dart';
 
 class DataPageGraphView extends StatefulWidget {
   const DataPageGraphView({super.key});
@@ -27,7 +27,8 @@ class _DataPageGraphViewState extends State<DataPageGraphView> {
         ),
         title: const Text('Data view'),
       ),
-      drawer: const Sidebar(), //New custom made drawer class.
-      body: const Placeholder(),);
+      drawer: const Sidebar(), // Custom made drawer class.
+      body: const Placeholder(),
+    );
   }
 }

@@ -22,7 +22,6 @@ class ScoringMethods {
     'Amp Note': 1,
     'Speaker Note (not amplified)': 2,
     'Speaker note (amplified)': 5,
-    'Amplification': 0
   };
 
   // Adjust this map to account for one time actions during teleop.
@@ -36,5 +35,4 @@ class ScoringMethods {
     'Harmony': 2,
     'Trap': 5
   };
-
 }

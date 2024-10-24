@@ -1,19 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-/// A class that stores individual data for the buttons to be used in the scouting page.
+/// Create a new button with given inputs.
+///
+/// **Required Fields:**
+/// * [name] The name assigned to the button.
+/// * [pointValue] The point value assigned to the button.
+/// * [buttonPressed] What this button will do when it is pressed.
+///
+///  ``` dart
+/// CustomIconButton(
+///         name: 'Name',
+///         pointValue: 5,
+///         buttonPressed: () {
+///         doSomething();
+///          }),
+///       );
+/// ```
 //ignore: must_be_immutable
-class ScoutingButtons extends StatelessWidget {
+class ScoutingButton extends StatelessWidget {
   String name = '';
   int pointValue = 0;
+  BuildContext context;
   var buttonPressed;
 
   var log = Logger(
     printer: PrettyPrinter(methodCount: 0),
   );
-
-  ScoutingButtons(
+  ScoutingButton(
       {super.key,
+      required this.context,
       required this.name,
       required this.pointValue,
       required this.buttonPressed});
@@ -21,9 +37,14 @@ class ScoutingButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: () {
-          log.d('$name button pressed');
-        },
-        child: Text(name));
+      onPressed: buttonPressed,
+      style: ElevatedButton.styleFrom(
+          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+          minimumSize: const Size(100, 45),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+          )),
+      child: Text(name),
+    );
   }
 }

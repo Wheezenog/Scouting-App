@@ -35,8 +35,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Home'),
       ),
       drawer: const Sidebar(), // Custom made drawer class.
-      body: const Placeholder()
+      body: const Placeholder(),
     );
   }
 }
-

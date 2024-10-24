@@ -57,8 +57,19 @@ class MyApp extends StatelessWidget {
           // Define a light and dark color theme. Then, read the user's
           // preferred ThemeMode (light, dark, or system default) from the
           // SettingsController to display the correct theme.
-          theme: ThemeData.light(),
-          darkTheme: ThemeData.dark(),
+          theme: ThemeData(
+            useMaterial3: true,
+            // Define the default brightness and colors.
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.green.shade600,
+              brightness: Brightness.light,
+            ),
+          ),
+          darkTheme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.green.shade600,
+            brightness: Brightness.dark,
+          )),
           themeMode: settingsController.themeMode,
 
           // Define a function to handle named routes in order to support
@@ -70,9 +81,9 @@ class MyApp extends StatelessWidget {
                 switch (routeSettings.name) {
                   case SettingsView.routeName:
                     return SettingsView(controller: settingsController);
-                    case DataPageGraphView.routeName:
+                  case DataPageGraphView.routeName:
                     return const DataPageGraphView();
-                    case FieldScoutingPage.routeName:
+                  case FieldScoutingPage.routeName:
                     return const FieldScoutingPage();
                   default:
                     return const HomePage();

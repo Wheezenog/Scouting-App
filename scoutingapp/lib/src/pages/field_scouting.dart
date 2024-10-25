@@ -33,11 +33,13 @@ class _FieldScoutingPageState extends State<FieldScoutingPage> {
         title: const Text('Field scouting'),
       ),
       drawer: const Sidebar(), // Custom made drawer class.
-      body: ListView(
+      body: GridView(
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
         children: [
           generateButtonsFromMap(context, ScoringMethods.autoScoringMethods),
           generateButtonsFromMap(context, ScoringMethods.teleopScoringMethods),
-          generateButtonsFromMap(context, ScoringMethods.endGameScoringMethods),
+          generateButtonsFromMap(context, ScoringMethods.endGameScoringMethods)
         ],
       ),
     );
@@ -66,7 +68,7 @@ Widget generateButtonsFromMap(BuildContext context, Map map) {
   List valueList = valueListFromMap(map);
 
   return ListView.builder(
-    shrinkWrap: true,
+      shrinkWrap: true,
       itemCount: map.length,
       itemBuilder: (BuildContext context, int index) {
         return Center(
@@ -74,8 +76,17 @@ Widget generateButtonsFromMap(BuildContext context, Map map) {
               context: context,
               name: keyList[index],
               pointValue: valueList[index],
-              buttonPressed: () {
-                log.d(keyList[index] + ' Button Pressed');
+              minusButtonPressed: () {
+                log.d(keyList[index] +
+                    ' Button Pressed, ' +
+                    'Point Value: -' +
+                    valueList[index].toString());
+              },
+              plusButtonPressed: () {
+                log.d(keyList[index] +
+                    ' Button Pressed, ' +
+                    'Point Value: +' +
+                    valueList[index].toString());
               }),
         );
       });

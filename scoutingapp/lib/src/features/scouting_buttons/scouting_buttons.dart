@@ -22,7 +22,8 @@ class ScoutingButton extends StatelessWidget {
   String name = '';
   int pointValue = 0;
   BuildContext context;
-  var buttonPressed;
+  var minusButtonPressed;
+  var plusButtonPressed;
 
   var log = Logger(
     printer: PrettyPrinter(methodCount: 0),
@@ -32,19 +33,44 @@ class ScoutingButton extends StatelessWidget {
       required this.context,
       required this.name,
       required this.pointValue,
-      required this.buttonPressed});
+      required this.minusButtonPressed,
+      required this.plusButtonPressed});
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: buttonPressed,
-      style: ElevatedButton.styleFrom(
-          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-          minimumSize: const Size(100, 45),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15)),
-          )),
-      child: Text(name),
+    return Card(
+      color: Theme.of(context).colorScheme.primaryContainer,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            icon: const Icon(Icons.remove),
+            onPressed: () {
+              minusButtonPressed;
+            },
+          ),
+          Text(name),
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              plusButtonPressed;
+            },
+          ),
+        ],
+      ),
     );
   }
 }
+
+// ElevatedButton(
+//             onPressed: buttonPressed,
+//             style: ElevatedButton.styleFrom(
+//                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+//                 minimumSize: const Size(100, 45),
+//                 shape: const RoundedRectangleBorder(
+//                   borderRadius: BorderRadius.all(Radius.circular(15)),
+//                 )),
+//             child: Text(name),
+//           ),

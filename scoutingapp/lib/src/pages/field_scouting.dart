@@ -14,10 +14,15 @@ class FieldScoutingPage extends StatefulWidget {
 }
 
 Logger log = Logger(printer: PrettyPrinter(methodCount: 0));
+Map<dynamic, dynamic> dataMap = {};
+
 
 class _FieldScoutingPageState extends State<FieldScoutingPage> {
   @override
   Widget build(BuildContext context) {
+    dataMap.addAll(ScoringMethods.autoScoringMethods);
+    dataMap.addAll(ScoringMethods.teleopScoringMethods);
+    dataMap.addAll(ScoringMethods.endGameScoringMethods);
     return Scaffold(
       appBar: AppBar(
         leading: Builder(
@@ -35,11 +40,9 @@ class _FieldScoutingPageState extends State<FieldScoutingPage> {
       drawer: const Sidebar(), // Custom made drawer class.
       body: GridView(
         gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
         children: [
-          generateButtonsFromMap(context, ScoringMethods.autoScoringMethods),
-          generateButtonsFromMap(context, ScoringMethods.teleopScoringMethods),
-          generateButtonsFromMap(context, ScoringMethods.endGameScoringMethods)
+          generateButtonsFromMap(context, dataMap),
         ],
       ),
     );

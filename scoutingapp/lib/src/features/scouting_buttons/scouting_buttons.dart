@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
@@ -40,37 +42,66 @@ class ScoutingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Theme.of(context).colorScheme.primaryContainer,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(15))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            icon: const Icon(Icons.remove),
-            onPressed: () {
-              minusButtonPressed;
-            },
+      icon: const Icon(Icons.remove),
+      style: IconButton.styleFrom(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15))),
+      ),
+      onPressed: () {
+        minusButtonPressed();
+      },
+    ),
+          Text(
+            name,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface,
+              fontWeight: FontWeight.normal,
+            ),
           ),
-          Text(name),
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () {
-              plusButtonPressed;
-            },
-          ),
+         IconButton(
+      icon: const Icon(Icons.add),
+      style: IconButton.styleFrom(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15))),
+      ),
+      onPressed: () {
+        plusButtonPressed();
+      },
+    ),
         ],
       ),
     );
   }
 }
 
-// ElevatedButton(
-//             onPressed: buttonPressed,
-//             style: ElevatedButton.styleFrom(
-//                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-//                 minimumSize: const Size(100, 45),
-//                 shape: const RoundedRectangleBorder(
-//                   borderRadius: BorderRadius.all(Radius.circular(15)),
-//                 )),
-//             child: Text(name),
-//           ),
+class CustomCheckBox extends StatefulWidget {
+  const CustomCheckBox({super.key, required this.name});
+  final String name;
+  @override
+  State<CustomCheckBox> createState() => _CustomCheckBoxState();
+}
+
+late bool isChecked;
+
+class _CustomCheckBoxState extends State<CustomCheckBox> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(children: [
+      Text(widget.name),
+      Checkbox(
+          value: isChecked,
+          onChanged: (bool? value) {
+            setState(() {
+              isChecked = value!;
+            });
+          })
+    ]);
+  }
+}

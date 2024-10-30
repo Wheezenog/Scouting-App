@@ -39,6 +39,7 @@ class _FieldScoutingPageState extends State<FieldScoutingPage> {
       ),
       drawer: const Sidebar(), // Custom made drawer class.
       body: GridView(
+        physics: const NeverScrollableScrollPhysics(),
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
         children: [

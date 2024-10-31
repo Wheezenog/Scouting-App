@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:scoutingapp/src/pages/data_page_graph_view.dart';
 import 'package:scoutingapp/src/Pages/home_page.dart';
 import 'package:scoutingapp/src/pages/field_scouting.dart';
+import 'package:scoutingapp/src/pages/file_creation.dart';
 
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
@@ -83,6 +84,8 @@ class MyApp extends StatelessWidget {
                     return SettingsView(controller: settingsController);
                   case DataPageGraphView.routeName:
                     return const DataPageGraphView();
+                    case FileCreation.routeName:
+                    return const FileCreation();
                   case FieldScoutingPage.routeName:
                     return const FieldScoutingPage();
                   default:

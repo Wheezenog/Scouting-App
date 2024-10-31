@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoutingapp/src/features/drawer/drawer_button.dart';
 import 'package:scoutingapp/src/pages/data_page_graph_view.dart';
+import 'package:scoutingapp/src/pages/file_creation.dart';
 import 'package:scoutingapp/src/pages/home_page.dart';
 import 'package:scoutingapp/src/pages/field_scouting.dart';
 import 'package:scoutingapp/src/settings/settings_view.dart';
@@ -19,7 +20,7 @@ class Sidebar extends StatelessWidget {
             // Home button.
             CustomIconButton(icon: Icons.home, text: 'Home', route: HomePage.routeName),
             // Scouting Button.
-            CustomIconButton(icon: Icons.add_chart, text: 'Scout', route: FieldScoutingPage.routeName),
+            CustomIconButton(icon: Icons.add_chart, text: 'Scout', route: FileCreation.routeName),
             // Data view.
             CustomIconButton(icon: Icons.analytics, text: 'Data view', route: DataPageGraphView.routeName),
             const Spacer(),

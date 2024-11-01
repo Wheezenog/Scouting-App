@@ -95,3 +95,6 @@ Widget generateButtonsFromMap(BuildContext context, Map map) {
         );
       });
 }
+
+void createNewFile(String teamNumber, String matchNumber, String event) {
+}

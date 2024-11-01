@@ -5,6 +5,7 @@ import 'package:scoutingapp/src/pages/data_page_graph_view.dart';
 import 'package:scoutingapp/src/Pages/home_page.dart';
 import 'package:scoutingapp/src/pages/field_scouting.dart';
 import 'package:scoutingapp/src/pages/file_creation.dart';
+import 'package:scoutingapp/src/util/app_data.dart';
 
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
@@ -85,7 +86,11 @@ class MyApp extends StatelessWidget {
                   case DataPageGraphView.routeName:
                     return const DataPageGraphView();
                     case FileCreation.routeName:
+                    if(AppData.currentlyScouting){
+                      return const FieldScoutingPage();
+                    } else {
                     return const FileCreation();
+                    }
                   case FieldScoutingPage.routeName:
                     return const FieldScoutingPage();
                   default:

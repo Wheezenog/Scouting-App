@@ -3,7 +3,6 @@ import 'package:scoutingapp/src/features/drawer/drawer_button.dart';
 import 'package:scoutingapp/src/pages/data_page_graph_view.dart';
 import 'package:scoutingapp/src/pages/file_creation.dart';
 import 'package:scoutingapp/src/pages/home_page.dart';
-import 'package:scoutingapp/src/pages/field_scouting.dart';
 import 'package:scoutingapp/src/settings/settings_view.dart';
 
 // ignore: must_be_immutable

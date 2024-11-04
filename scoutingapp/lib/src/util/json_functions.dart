@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:logger/logger.dart';
+import 'package:path_provider/path_provider.dart';
 
 class JsonFunctions {
   late String fileName;
@@ -16,14 +17,22 @@ class JsonFunctions {
     file.createSync();
   }
 
+  // The getter used for the json file in question.
+Future<File> get _jsonFile async {
+  Directory? dir = await getTemporaryDirectory();
+  dir.createSync();
+  return File('${dir.path}/$fileName.json');
+}
+
   /// Writes [Map] data to a file.
   ///
   /// + [key] The key assigned to the file. NOTE:
   ///   - NOTE: If key already exists within the file, the new value will replace the old one.
   /// + [value] The value assigned to the given key.
-  void writeToFile(String key, dynamic value, File file) {
+  void writeToFile(String key, dynamic value) async {
+    File file = await _jsonFile;
     log.d('writing to file...');
-    var fileContents = readFromJsonFile(file);
+    Map<String, dynamic> fileContents = await readFromJsonFile();
     var keyValueMap = {key: value};
     fileContents.addAll(keyValueMap);
     String jsonString = jsonEncode(fileContents);
@@ -31,9 +40,8 @@ class JsonFunctions {
   }
 
   /// Puts data from file into a [Map].
-  ///
-  /// + [file] The file to get the data from.
-  Map<String, dynamic> readFromJsonFile(File file) {
+  Future<Map<String, dynamic>> readFromJsonFile() async {
+    File file = await _jsonFile;
     log.d('Reading file contents...');
     String rawData = file.readAsStringSync();
     Map<String, dynamic> fileContents;
@@ -49,25 +57,16 @@ class JsonFunctions {
   }
 
   /// Returns a [Future] of a list that contains all the keys in the file.
-  List<dynamic> getFileKeys(File file) {
+  Future<List<dynamic>> getFileKeys() async {
     log.d('getting keys...');
-    var fileContents = readFromJsonFile(file);
+    var fileContents = await readFromJsonFile();
     return fileContents.keys.toList();
   }
 
   /// Returns a [Future] of a list that contains all the values in the file.
-  List<dynamic> getFileValues(File file) {
+  Future<List<dynamic>> getFileValues() async {
     log.d('getting values...');
-    var fileContents = readFromJsonFile(file);
+    var fileContents = await readFromJsonFile();
     return fileContents.values.toList();
   }
 }
-
-// NOTE: I don't know if ill need this or not.
-
-// // The getter used for the json file in question.
-// Future<File> get _jsonFile async {
-//   Directory? dir = await getTemporaryDirectory();
-//   dir.createSync();
-//   return File('${dir.path}/$fileName');
-// }

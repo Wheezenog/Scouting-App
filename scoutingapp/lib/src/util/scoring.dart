@@ -1,4 +1,4 @@
-class ScoringMethods {
+class Scoring {
   // NOTE: These values will be set as the names of the buttons that will be used when scouting, make sure to name buttons appropriately.
   // NOTE: Make sure to also change the point values assigned to each scoring method in that respective list.
   //

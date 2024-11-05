@@ -40,68 +40,66 @@ class ScoutingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Theme.of(context).colorScheme.primaryContainer,
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15))),
-      child: Row(
+    return SizedBox(
+      width: 100,
+      height: 110,
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
         children: [
-          IconButton(
-      icon: const Icon(Icons.remove),
-      style: IconButton.styleFrom(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15))),
-      ),
-      onPressed: () {
-        minusButtonPressed();
-      },
-    ),
-          Text(
-            name,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onSurface,
-              fontWeight: FontWeight.normal,
+          SizedBox(
+            width: 50,
+            height: 25,
+            child: IconButton.filled(
+              onPressed: plusButtonPressed,
+              style: IconButton.styleFrom(
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+              ),
+              icon: const Icon(
+                Icons.add,
+                size: 10,
+              ),
             ),
           ),
-         IconButton(
-      icon: const Icon(Icons.add),
-      style: IconButton.styleFrom(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15))),
-      ),
-      onPressed: () {
-        plusButtonPressed();
-      },
-    ),
+          InkWell(
+            onTap: plusButtonPressed,
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              semanticContainer: true,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: Flexible(
+                      child: Text(
+                        name,
+                        textAlign: TextAlign.center,
+                      ),
+                    )),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 50,
+            height: 25,
+            child: IconButton.filled(
+              onPressed: minusButtonPressed,
+              style: IconButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.error,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+              ),
+              icon: const Icon(
+                Icons.remove,
+                size: 10,
+                color: Colors.white,
+              ),
+            ),
+          )
         ],
       ),
     );
-  }
-}
-
-class CustomCheckBox extends StatefulWidget {
-  const CustomCheckBox({super.key, required this.name});
-  final String name;
-  @override
-  State<CustomCheckBox> createState() => _CustomCheckBoxState();
-}
-
-late bool isChecked;
-
-class _CustomCheckBoxState extends State<CustomCheckBox> {
-  @override
-  Widget build(BuildContext context) {
-    return Row(children: [
-      Text(widget.name),
-      Checkbox(
-          value: isChecked,
-          onChanged: (bool? value) {
-            setState(() {
-              isChecked = value!;
-            });
-          })
-    ]);
   }
 }

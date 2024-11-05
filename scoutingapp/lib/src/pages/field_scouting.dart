@@ -28,9 +28,7 @@ String currentFileName = '';
 class _FieldScoutingPageState extends State<FieldScoutingPage> {
   @override
   Widget build(BuildContext context) {
-    dataMap.addAll(Scoring.autoScoringMethods);
-    dataMap.addAll(Scoring.teleopScoringMethods);
-    dataMap.addAll(Scoring.endGameScoringMethods);
+    dataMap.addAll(Scoring.allTimeScoringMethods);
     return Scaffold(
         appBar: AppBar(
             leading: Builder(
@@ -45,12 +43,22 @@ class _FieldScoutingPageState extends State<FieldScoutingPage> {
             ),
             title: Text(currentFileName)),
         drawer: const Sidebar(), // Custom made drawer class.
-        body: ScoutingButton(
-            context: context,
-            name: 'Help',
-            pointValue: 5,
-            minusButtonPressed: () {},
-            plusButtonPressed: () {})
+        body: SizedBox(
+          width: double.infinity,
+          height: double.infinity,
+          child: Center(
+            child: ScoutingButton(
+                context: context,
+                name: 'Bucket Low',
+                pointValue: 5,
+                minusButtonPressed: () {
+                  log.d('minus button pressed');
+                },
+                plusButtonPressed: () {
+                  log.d('plus button pressed');
+                }),
+          ),
+        )
         // generateButtonsFromMap(context, dataMap),
         );
   }

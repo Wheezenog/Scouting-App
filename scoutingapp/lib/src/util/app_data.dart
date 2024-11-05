@@ -1,3 +1,3 @@
 class AppData {
-  static bool currentlyScouting = false;
+  static bool currentlyScouting = true;
 }

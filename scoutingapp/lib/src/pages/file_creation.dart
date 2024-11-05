@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoutingapp/src/features/drawer/sidebar.dart';
-import 'package:scoutingapp/src/pages/field_scouting.dart';
+import 'package:scoutingapp/src/pages/field_scouting/field_scouting.dart';
 import 'package:scoutingapp/src/util/app_data.dart';
 
 class FileCreation extends StatefulWidget {

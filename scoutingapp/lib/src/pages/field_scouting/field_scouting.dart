@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:scoutingapp/src/features/custom_checkbox.dart';
 import 'package:scoutingapp/src/features/drawer/sidebar.dart';
 import 'package:scoutingapp/src/util/scoring.dart';
 import 'package:scoutingapp/src/features/scouting_buttons/scouting_buttons.dart';
@@ -24,6 +25,7 @@ class FieldScoutingPage extends StatefulWidget {
 Logger log = Logger(printer: PrettyPrinter(methodCount: 0));
 Map<dynamic, dynamic> dataMap = {};
 String currentFileName = '';
+bool? isChecked = false;
 
 class _FieldScoutingPageState extends State<FieldScoutingPage> {
   @override
@@ -43,69 +45,121 @@ class _FieldScoutingPageState extends State<FieldScoutingPage> {
             ),
             title: Text(currentFileName)),
         drawer: const Sidebar(), // Custom made drawer class.
-        body: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: Center(
-            child: ScoutingButton(
-                context: context,
-                name: 'Bucket Low',
-                pointValue: 5,
-                minusButtonPressed: () {
-                  log.d('minus button pressed');
-                },
-                plusButtonPressed: () {
-                  log.d('plus button pressed');
-                }),
-          ),
-        )
-        // generateButtonsFromMap(context, dataMap),
-        );
+        body: Column(
+          children: [
+            const Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Card(
+                    color: Colors.amber,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        'Auto',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                )),
+            Expanded(
+              child: SizedBox(
+                width: double.infinity,
+                height: double.infinity,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ScoutingButton(
+                        context: context,
+                        name: 'Bucket Low',
+                        pointValue: 5,
+                        minusButtonPressed: () {
+                          log.d('Bucket Low Pressed (-)');
+                        },
+                        plusButtonPressed: () {
+                          log.d('Bucket Low pressed (+)');
+                        }),
+                    ScoutingButton(
+                        context: context,
+                        name: 'Bucket High',
+                        pointValue: 5,
+                        minusButtonPressed: () {
+                          log.d('Bucket High Pressed (-)');
+                        },
+                        plusButtonPressed: () {
+                          log.d('Bucket High Pressed (+)');
+                        }),
+                    ScoutingButton(
+                        context: context,
+                        name: 'Net',
+                        pointValue: 5,
+                        minusButtonPressed: () {
+                          log.d('Net Pressed (-)');
+                        },
+                        plusButtonPressed: () {
+                          log.d('Net Pressed (+)');
+                        }),
+                    ScoutingButton(
+                        context: context,
+                        name: 'Clip Low',
+                        pointValue: 5,
+                        minusButtonPressed: () {
+                          log.d('Clip Low Pressed (-)');
+                        },
+                        plusButtonPressed: () {
+                          log.d('Clip Low Pressee (+)');
+                        }),
+                    ScoutingButton(
+                        context: context,
+                        name: 'Clip High',
+                        pointValue: 5,
+                        minusButtonPressed: () {
+                          log.d('Clip High Pressed (-)');
+                        },
+                        plusButtonPressed: () {
+                          log.d('Clip Low Pressed (-)');
+                        }),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomCheckbox(
+                  name: 'Checkbox',
+                  onChecked: () {
+                    setState(() {
+                    });
+                  },
+                )
+              ],
+            )),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: ElevatedButton(
+                  onPressed: () {
+                    log.d('Teleop Button Pressed');
+                  },
+                  child: const Text('TeleOp.')),
+            ),
+          ],
+        ));
   }
 }
 
-///Get the keys from a map and put them into a new list.
-List keyListFromMap(Map map) {
-  List keyList = map.keys.toList();
-  return keyList;
-}
+// ///Get the keys from a map and put them into a new list.
+// List keyListFromMap(Map map) {
+//   List keyList = map.keys.toList();
+//   return keyList;
+// }
 
-///Get the values from a map and put them into a new list.
-List valueListFromMap(Map map) {
-  List valueList = map.values.toList();
-  return valueList;
-}
-
-/// Generate a list of buttons from a map.
-///
-// /// **Required Fields:**
-// /// + [context] BuildContext, not something that has to be made. The buttons use it for theme data.
-// /// + [map] The `Map<String, int>` that will be used to get data for the buttons
-// Widget generateButtonsFromMap(BuildContext context, Map map) {
-//   List keyList = keyListFromMap(map);
-//   List valueList = valueListFromMap(map);
-
-//   return ListView.builder(
-//       shrinkWrap: true,
-//       itemCount: map.length,
-//       itemBuilder: (BuildContext context, int index) {
-//         return Center(
-//           child: ScoutingButton(
-//               context: context,
-//               name: keyList[index],
-//               pointValue: valueList[index],
-//               minusButtonPressed: () {
-//                 log.d(keyList[index] +
-//                     ' Button Pressed, ' +
-//                     'Point Value: -' +
-//                     valueList[index].toString());
-//               },
-//               plusButtonPressed: () {
-//                 log.d(keyList[index] +
-//                     ' Button Pressed, ' +
-//                     'Point Value: +' +
-//                     valueList[index].toString());
-//               }),
-//         );
-//       });
+// ///Get the values from a map and put them into a new list.
+// List valueListFromMap(Map map) {
+//   List valueList = map.values.toList();
+//   return valueList;
 // }

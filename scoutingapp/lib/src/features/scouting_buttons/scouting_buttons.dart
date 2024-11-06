@@ -72,11 +72,9 @@ class ScoutingButton extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: FittedBox(
                     fit: BoxFit.fitWidth,
-                    child: Flexible(
-                      child: Text(
-                        name,
-                        textAlign: TextAlign.center,
-                      ),
+                    child: Text(
+                      name,
+                      textAlign: TextAlign.center,
                     )),
               ),
             ),

@@ -3,7 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:scoutingapp/src/pages/data_page_graph_view.dart';
 import 'package:scoutingapp/src/Pages/home_page.dart';
-import 'package:scoutingapp/src/pages/field_scouting/field_scouting.dart';
+import 'package:scoutingapp/src/pages/field_scouting/auto_scouting.dart';
+import 'package:scoutingapp/src/pages/field_scouting/teleop_scouting.dart';
 import 'package:scoutingapp/src/pages/file_creation.dart';
 import 'package:scoutingapp/src/util/app_data.dart';
 
@@ -87,12 +88,14 @@ class MyApp extends StatelessWidget {
                     return const DataPageGraphView();
                     case FileCreation.routeName:
                     if(AppData.currentlyScouting){
-                      return const FieldScoutingPage();
+                      return AppData.currentScoutingPage();
                     } else {
                     return const FileCreation();
                     }
-                  case FieldScoutingPage.routeName:
-                    return const FieldScoutingPage();
+                  case AutoScoutingPage.routeName:
+                    return const AutoScoutingPage();
+                    case TeleopScoutingPage.routeName:
+                      return const TeleopScoutingPage();
                   default:
                     return const HomePage();
                 }

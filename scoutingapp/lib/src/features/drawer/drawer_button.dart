@@ -22,17 +22,22 @@ class CustomIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        IconButton(
-            iconSize: 25,
-            padding: const EdgeInsets.all(10),
-            onPressed: () {
-              Navigator.restorablePushNamed(context, route!);
-            },
-            icon: Icon(icon)),
-        Text(text!)
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: InkWell(
+          onTap: () {
+            Navigator.restorablePushNamed(context, route!);
+          },
+          child: Row(
+            children: [
+              Icon(
+                (icon),
+                size: 25,
+              ),
+              const SizedBox(width: 8),
+              Text(text!)
+            ],
+          )),
     );
   }
 }

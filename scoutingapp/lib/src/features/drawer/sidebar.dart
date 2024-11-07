@@ -21,10 +21,10 @@ class Sidebar extends StatelessWidget {
             // Scouting Button.
             CustomIconButton(icon: Icons.add_chart, text: 'Scout', route: FileCreation.routeName),
             // Data view.
-            CustomIconButton(icon: Icons.analytics, text: 'Data view', route: DataPageGraphView.routeName),
+            CustomIconButton(icon: Icons.bar_chart, text: 'Data view', route: DataPageGraphView.routeName),
             const Spacer(),
             // Settings button.
-            CustomIconButton(icon: Icons.settings, text: 'settings', route: SettingsView.routeName)
+            CustomIconButton(icon: Icons.settings, text: 'Settings', route: SettingsView.routeName)
           ],
         ),
       ),

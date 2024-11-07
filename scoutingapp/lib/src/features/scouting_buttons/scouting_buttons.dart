@@ -20,29 +20,37 @@ import 'package:logger/logger.dart';
 ///       );
 /// ```
 //ignore: must_be_immutable
-class ScoutingButton extends StatelessWidget {
+class ScoutingButton extends StatefulWidget {
   String name = '';
   int pointValue = 0;
   BuildContext context;
   var minusButtonPressed;
   var plusButtonPressed;
+  int counter;
 
-  var log = Logger(
-    printer: PrettyPrinter(methodCount: 0),
-  );
   ScoutingButton(
       {super.key,
       required this.context,
       required this.name,
       required this.pointValue,
       required this.minusButtonPressed,
-      required this.plusButtonPressed});
+      required this.plusButtonPressed,
+      required this.counter});
+
+  @override
+  State<ScoutingButton> createState() => _ScoutingButtonState();
+}
+
+class _ScoutingButtonState extends State<ScoutingButton> {
+  var log = Logger(
+    printer: PrettyPrinter(methodCount: 0),
+  );
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 100,
-      height: 110,
+      height: 115,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -50,7 +58,12 @@ class ScoutingButton extends StatelessWidget {
             width: 50,
             height: 25,
             child: IconButton.filled(
-              onPressed: plusButtonPressed,
+              onPressed: () {
+                setState(() {
+                  widget.counter++;
+                });
+                widget.plusButtonPressed();
+              },
               style: IconButton.styleFrom(
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -63,7 +76,12 @@ class ScoutingButton extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: plusButtonPressed,
+            onTap: () {
+              setState(() {
+                widget.counter++;
+              });
+              widget.plusButtonPressed();
+            },
             child: Card(
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -71,11 +89,17 @@ class ScoutingButton extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: FittedBox(
-                    fit: BoxFit.fitWidth,
-                    child: Text(
-                      name,
-                      textAlign: TextAlign.center,
-                    )),
+                  fit: BoxFit.fitWidth,
+                  child: Column(
+                    children: [
+                      Text(
+                        widget.name,
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(widget.counter.toString())
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
@@ -83,7 +107,12 @@ class ScoutingButton extends StatelessWidget {
             width: 50,
             height: 25,
             child: IconButton.filled(
-              onPressed: minusButtonPressed,
+              onPressed: () {
+                setState(() {
+                  widget.counter--;
+                });
+                widget.minusButtonPressed();
+              },
               style: IconButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.error,
                 shape: const RoundedRectangleBorder(

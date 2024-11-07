@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoutingapp/src/features/drawer/sidebar.dart';
-import 'package:scoutingapp/src/pages/field_scouting/field_scouting.dart';
+import 'package:scoutingapp/src/pages/field_scouting/auto_scouting.dart';
 import 'package:scoutingapp/src/util/app_data.dart';
 
 class FileCreation extends StatefulWidget {
@@ -167,8 +167,8 @@ class ConfirmMessage extends StatelessWidget {
           onPressed: () {
             log.d('Create New File');
             Navigator.pop(context, 'Continue');
-            FieldScoutingPage.createNewFile(numberSelected, eventSelected);
-            Navigator.restorablePushNamed(context, FieldScoutingPage.routeName);
+            AutoScoutingPage.createNewFile(numberSelected, eventSelected);
+            Navigator.restorablePushNamed(context, AutoScoutingPage.routeName);
           },
           child: const Text('YES'),
         ),

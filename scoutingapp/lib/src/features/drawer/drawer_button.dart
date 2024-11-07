@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 ///  ``` dart
 /// CustomIconButton(icon: Icons.(icon), text: 'Some Text', route: ClassName.routeName)
 /// ```
-// ignore: must_be_immutable
+
 class CustomIconButton extends StatelessWidget {
   IconData? icon;
   String? text = '';

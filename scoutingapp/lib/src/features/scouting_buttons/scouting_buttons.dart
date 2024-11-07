@@ -19,10 +19,9 @@ import 'package:logger/logger.dart';
 ///          }),
 ///       );
 /// ```
-//ignore: must_be_immutable
 class ScoutingButton extends StatefulWidget {
-  String name = '';
-  int pointValue = 0;
+  String name;
+  int pointValue;
   BuildContext context;
   var minusButtonPressed;
   var plusButtonPressed;

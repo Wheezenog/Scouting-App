@@ -4,8 +4,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:scoutingapp/src/pages/data_page_graph_view.dart';
 import 'package:scoutingapp/src/Pages/home_page.dart';
 import 'package:scoutingapp/src/pages/field_scouting/auto_scouting.dart';
+import 'package:scoutingapp/src/pages/field_scouting/endgame_scouting.dart';
 import 'package:scoutingapp/src/pages/field_scouting/teleop_scouting.dart';
-import 'package:scoutingapp/src/pages/file_creation.dart';
+import 'package:scoutingapp/src/pages/file%20management/file_creation.dart';
+import 'package:scoutingapp/src/pages/file%20management/file_finalization.dart';
 import 'package:scoutingapp/src/util/app_data.dart';
 
 import 'settings/settings_controller.dart';
@@ -70,7 +72,7 @@ class MyApp extends StatelessWidget {
           ),
           darkTheme: ThemeData(
               colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.green.shade600,
+            seedColor: Colors.green,
             brightness: Brightness.dark,
           )),
           themeMode: settingsController.themeMode,
@@ -86,16 +88,20 @@ class MyApp extends StatelessWidget {
                     return SettingsView(controller: settingsController);
                   case DataPageGraphView.routeName:
                     return const DataPageGraphView();
-                    case FileCreation.routeName:
-                    if(AppData.currentlyScouting){
+                  case FileCreation.routeName:
+                    if (AppData.currentlyScouting) {
                       return AppData.currentScoutingPage();
                     } else {
-                    return const FileCreation();
+                      return const FileCreation();
                     }
-                  case AutoScoutingPage.routeName:
-                    return const AutoScoutingPage();
-                    case TeleopScoutingPage.routeName:
-                      return const TeleopScoutingPage();
+                  case AutoScouting.routeName:
+                    return const AutoScouting();
+                  case TeleopScouting.routeName:
+                    return const TeleopScouting();
+                  case EndgameScouting.routeName:
+                    return const EndgameScouting();
+                  case FileFinalization.routeName:
+                  return const FileFinalization();
                   default:
                     return const HomePage();
                 }

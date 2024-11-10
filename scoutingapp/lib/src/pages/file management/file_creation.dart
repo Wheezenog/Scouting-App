@@ -167,8 +167,8 @@ class ConfirmMessage extends StatelessWidget {
           onPressed: () {
             log.d('Create New File');
             Navigator.pop(context, 'Continue');
-            AutoScoutingPage.createNewFile(numberSelected, eventSelected);
-            Navigator.restorablePushNamed(context, AutoScoutingPage.routeName);
+            AutoScouting.createNewFile(numberSelected, eventSelected);
+            Navigator.restorablePushNamed(context, AutoScouting.routeName);
           },
           child: const Text('YES'),
         ),

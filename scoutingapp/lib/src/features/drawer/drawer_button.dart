@@ -13,11 +13,11 @@ import 'package:flutter/material.dart';
 /// ```
 
 class CustomIconButton extends StatelessWidget {
-  IconData? icon;
-  String? text = '';
-  String? route = '';
+  final IconData? icon;
+  final String? text;
+  final String? route;
 
-  CustomIconButton(
+  const CustomIconButton(
       {super.key, required this.icon, required this.text, required this.route});
 
   @override

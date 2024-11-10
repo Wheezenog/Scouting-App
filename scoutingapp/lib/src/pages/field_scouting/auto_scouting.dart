@@ -7,13 +7,13 @@ import 'package:scoutingapp/src/util/scoring.dart';
 import 'package:scoutingapp/src/util/app_data.dart';
 import 'package:scoutingapp/src/util/json_functions.dart';
 
-class AutoScoutingPage extends StatefulWidget {
-  const AutoScoutingPage({super.key});
+class AutoScouting extends StatefulWidget {
+  const AutoScouting({super.key});
   // Set the name for the route used for page switching.
   static const routeName = '/Auto_scouting';
 
   @override
-  State<AutoScoutingPage> createState() => _AutoScoutingPageState();
+  State<AutoScouting> createState() => _AutoScoutingState();
 
   static void createNewFile(String teamNumber, String event) {
     AppData.currentFileName = '${event}_$teamNumber';
@@ -26,7 +26,7 @@ Logger log = Logger(printer: PrettyPrinter(methodCount: 0));
 Map<dynamic, dynamic> dataMap = {};
 bool? isChecked = false;
 
-class _AutoScoutingPageState extends State<AutoScoutingPage> {
+class _AutoScoutingState extends State<AutoScouting> {
   @override
   Widget build(BuildContext context) {
     dataMap.addAll(Scoring.allTimeScoringMethods);
@@ -63,8 +63,8 @@ class _AutoScoutingPageState extends State<AutoScoutingPage> {
                   ),
                 ),
               )),
-          const Expanded(
-            child: ScoutingButtonRow()
+          Expanded(
+            child: ScoutingButtonRow(),
           ),
           const Expanded(
               child: Row(
@@ -82,7 +82,8 @@ class _AutoScoutingPageState extends State<AutoScoutingPage> {
                       backgroundColor: Colors.green),
                   onPressed: () {
                     AppData.currentPageName = 'teleop';
-                    Navigator.restorablePushNamed(context, TeleopScoutingPage.routeName);
+                    Navigator.restorablePushNamed(
+                        context, TeleopScouting.routeName);
                   },
                   child: const Padding(
                     padding: EdgeInsets.all(10),

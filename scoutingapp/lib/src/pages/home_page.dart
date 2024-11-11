@@ -11,8 +11,6 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-Logger logWithStack = Logger(printer: PrettyPrinter());
-
 var log = Logger(
   printer: PrettyPrinter(methodCount: 0),
 );

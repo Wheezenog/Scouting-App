@@ -6,6 +6,7 @@ import 'package:scoutingapp/src/pages/field_scouting/teleop_scouting.dart';
 class AppData {
   static bool currentlyScouting = false;
   static String currentFileName = '';
+  static String currentFileNameWithSpace = currentFileName.replaceAll('_', ' ');
   static String currentPageName = '';
 
   static int bucketLowCount = 0;

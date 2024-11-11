@@ -16,7 +16,7 @@ class AutoScouting extends StatefulWidget {
   State<AutoScouting> createState() => _AutoScoutingState();
 
   static void createNewFile(String teamNumber, String event) {
-    AppData.currentFileName = '${event}_$teamNumber';
+    AppData.currentFileName = '${teamNumber}_$event';
     AppData.currentlyScouting = true;
     JsonFunctions(AppData.currentFileName);
   }
@@ -42,56 +42,59 @@ class _AutoScoutingState extends State<AutoScouting> {
                   icon: const Icon(Icons.menu));
             },
           ),
-          title: Center(child: Text(AppData.currentFileName))),
+          title: Center(child: Text(AppData.currentFileNameWithSpace))),
       drawer: const Sidebar(), // Custom made drawer class.
       body: Column(
         children: [
           const Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Card(
-                  color: Colors.amber,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
-                  child: Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      'Currently Scouting: Auto',
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    ),
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Card(
+                color: Colors.amber,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    'Currently Scouting: Auto',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ),
-              )),
+              ),
+            ),
+          ),
           Expanded(
             child: ScoutingButtonRow(),
           ),
           const Expanded(
-              child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [Placeholder()],
-          )),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [Placeholder()],
+            ),
+          ),
           Align(
             alignment: Alignment.bottomRight,
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      backgroundColor: Colors.green),
-                  onPressed: () {
-                    AppData.currentPageName = 'teleop';
-                    Navigator.restorablePushNamed(
-                        context, TeleopScouting.routeName);
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      'Teleop',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )),
+                style: ElevatedButton.styleFrom(
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    backgroundColor: Colors.green),
+                onPressed: () {
+                  AppData.currentPageName = 'teleop';
+                  Navigator.restorablePushNamed(
+                      context, TeleopScouting.routeName);
+                },
+                child: const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    'Teleop',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
             ),
           )
         ],
@@ -99,15 +102,3 @@ class _AutoScoutingState extends State<AutoScouting> {
     );
   }
 }
-
-// ///Get the keys from a map and put them into a new list.
-// List keyListFromMap(Map map) {
-//   List keyList = map.keys.toList();
-//   return keyList;
-// }
-
-// ///Get the values from a map and put them into a new list.
-// List valueListFromMap(Map map) {
-//   List valueList = map.values.toList();
-//   return valueList;
-// }

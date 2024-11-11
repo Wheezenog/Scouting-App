@@ -10,7 +10,7 @@ class Sidebar extends StatelessWidget {
   const Sidebar({super.key});
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+    return const Drawer(
       width: 200,
       child: Scaffold(
         body: Column(
@@ -21,7 +21,7 @@ class Sidebar extends StatelessWidget {
             CustomIconButton(icon: Icons.add_chart, text: 'Scout', route: FileCreation.routeName),
             // Data view.
             CustomIconButton(icon: Icons.bar_chart, text: 'Data view', route: DataPageGraphView.routeName),
-            const Spacer(),
+            Spacer(),
             // Settings button.
             CustomIconButton(icon: Icons.settings, text: 'Settings', route: SettingsView.routeName)
           ],

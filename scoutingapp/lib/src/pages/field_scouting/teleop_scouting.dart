@@ -31,7 +31,7 @@ class _TeleopScoutingState extends State<TeleopScouting> {
                   icon: const Icon(Icons.menu));
             },
           ),
-          title: Center(child: Text(AppData.currentFileName))),
+          title: Center(child: Text(AppData.currentFileNameWithSpace))),
       drawer: const Sidebar(), // Custom made drawer class.
       body: Column(
         children: [

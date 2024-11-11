@@ -52,13 +52,13 @@ class _TeleopScoutingState extends State<TeleopScouting> {
                   ),
                 ),
               )),
-          Expanded(
-            child: ScoutingButtonRow(),
+          const Expanded(
+            child: ScoutingButtonRow(mode: 'teleop'),
           ),
           const Expanded(
               child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [Placeholder()],
+            children: [Text("Pretend there's teleop things here...")],
           )),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

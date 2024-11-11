@@ -32,10 +32,10 @@ class CustomIconButton extends StatelessWidget {
             children: [
               Icon(
                 (icon),
-                size: 25,
+                size: 35,
               ),
               const SizedBox(width: 8),
-              Text(text!)
+              Text(text!, style: const TextStyle(fontSize: 14),)
             ],
           )),
     );

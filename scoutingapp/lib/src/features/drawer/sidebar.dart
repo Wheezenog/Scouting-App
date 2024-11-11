@@ -13,18 +13,21 @@ class Sidebar extends StatelessWidget {
     return const Drawer(
       width: 200,
       child: Scaffold(
-        body: Column(
-          children: [
-            // Home button.
-            CustomIconButton(icon: Icons.home, text: 'Home', route: HomePage.routeName),
-            // Scouting Button.
-            CustomIconButton(icon: Icons.add_chart, text: 'Scout', route: FileCreation.routeName),
-            // Data view.
-            CustomIconButton(icon: Icons.bar_chart, text: 'Data view', route: DataPageGraphView.routeName),
-            Spacer(),
-            // Settings button.
-            CustomIconButton(icon: Icons.settings, text: 'Settings', route: SettingsView.routeName)
-          ],
+        body: Padding(
+          padding: EdgeInsets.only(top: 15, bottom: 15),
+          child: Column(
+            children: [
+              // Home button.
+              CustomIconButton(icon: Icons.home, text: 'Home', route: HomePage.routeName),
+              // Scouting Button.
+              CustomIconButton(icon: Icons.add_chart, text: 'Scout', route: FileCreation.routeName),
+              // Data view.
+              CustomIconButton(icon: Icons.bar_chart, text: 'Data view', route: DataPageGraphView.routeName),
+              Spacer(),
+              // Settings button.
+              CustomIconButton(icon: Icons.settings, text: 'Settings', route: SettingsView.routeName)
+            ],
+          ),
         ),
       ),
     );

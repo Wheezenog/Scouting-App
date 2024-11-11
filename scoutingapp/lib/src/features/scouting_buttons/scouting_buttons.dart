@@ -42,77 +42,80 @@ class ScoutingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return SizedBox(
-      width: 125,
-      height: 150,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            width: 50,
-            height: 25,
-            child: IconButton.filled(
-              onPressed: () {
-                plusButtonPressed();
-              },
-              style: IconButton.styleFrom(
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
+    
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: SizedBox(
+        width: 150,
+        height: 215,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 60,
+              height: 35,
+              child: IconButton.filled(
+                onPressed: () {
+                  plusButtonPressed();
+                },
+                style: IconButton.styleFrom(
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                ),
+                icon: const Icon(
+                  Icons.add,
+                  size: 10,
                 ),
               ),
-              icon: const Icon(
-                Icons.add,
-                size: 10,
-              ),
             ),
-          ),
-          InkWell(
-            onTap: () {
-              plusButtonPressed();
-            },
-            child: Card(
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
-              semanticContainer: true,
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Column(
-                    children: [
-                      Text(
-                        name,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                      Text(counter.toString(), style: const TextStyle(fontSize: 18),)
-                    ],
+            InkWell(
+              onTap: () {
+                plusButtonPressed();
+              },
+              child: Card(
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25))),
+                semanticContainer: true,
+                child: Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: FittedBox(
+                    fit: BoxFit.none,
+                    child: Column(
+                      children: [
+                        Text(
+                          name,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                        Text(counter.toString(), style: const TextStyle(fontSize: 24),)
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            width: 50,
-            height: 25,
-            child: IconButton.filled(
-              onPressed: () {
-                minusButtonPressed();
-              },
-              style: IconButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.error,
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
+            SizedBox(
+              width: 60,
+              height: 35,
+              child: IconButton.filled(
+                onPressed: () {
+                  minusButtonPressed();
+                },
+                style: IconButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.error,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                ),
+                icon: const Icon(
+                  Icons.remove,
+                  size: 10,
+                  color: Colors.white,
+                ),
               ),
-              icon: const Icon(
-                Icons.remove,
-                size: 10,
-                color: Colors.white,
-              ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

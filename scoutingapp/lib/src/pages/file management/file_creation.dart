@@ -23,8 +23,8 @@ class _FileCreationState extends State<FileCreation> {
     List teamNumbers = ['3655', '8424', '6078', '3620', '6328'];
     List events = ['Escanaba', 'Lansing', 'States', 'Worlds', 'Goonettes'];
 
-    String? numbersDefault = '3655';
-    String? eventsDefault = 'Worlds';
+    // String? numbersDefault = '3655';
+    // String? eventsDefault = 'Worlds';
 
     TextEditingController numberController = TextEditingController();
     TextEditingController eventController = TextEditingController();
@@ -66,11 +66,9 @@ class _FileCreationState extends State<FileCreation> {
             enableFilter: true,
             width: 250,
             menuHeight: 150,
-            initialSelection: numbersDefault,
             dropdownMenuEntries: teamNumbers
-                .map((e) => DropdownMenuEntry(value: e, label: e))
+                .map((e) => DropdownMenuEntry(value: e.toString(), label: e))
                 .toList(),
-            requestFocusOnTap: true,
             onSelected: (value) {
               numberSelected = value.toString();
               numberEntered = true;
@@ -90,11 +88,9 @@ class _FileCreationState extends State<FileCreation> {
             enableFilter: true,
             width: 250,
             menuHeight: 150,
-            initialSelection: eventsDefault,
             dropdownMenuEntries: events
-                .map((e) => DropdownMenuEntry(value: e, label: e))
+                .map((e) => DropdownMenuEntry(value: e.toString(), label: e))
                 .toList(),
-            requestFocusOnTap: true,
             onSelected: (value) {
               eventSelected = value.toString();
               eventEntered = true;
@@ -103,10 +99,10 @@ class _FileCreationState extends State<FileCreation> {
           const SizedBox(height: 25),
           ElevatedButton(
               onPressed: () {
-                if(numberController.text.isEmpty){
+                if (numberController.text.isEmpty) {
                   numberEntered = false;
                 }
-                if(eventController.text.isEmpty){
+                if (eventController.text.isEmpty) {
                   eventEntered = false;
                 }
                 if (numberEntered & eventEntered) {

@@ -52,13 +52,13 @@ class _EndgameScoutingState extends State<EndgameScouting> {
                   ),
                 ),
               )),
-          Expanded(
-            child: ScoutingButtonRow(),
+          const Expanded(
+            child: ScoutingButtonRow(mode: 'teleop'),
           ),
           const Expanded(
               child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [Placeholder()],
+            children: [Text("Pretend there's endgame things here...")],
           )),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,21 +92,23 @@ class _EndgameScoutingState extends State<EndgameScouting> {
                 child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          shape: const RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                          backgroundColor: Colors.blue),
-                      onPressed: () {
-                        Navigator.restorablePushNamed(context, FileFinalization.routeName);
-                      },
-                      child: const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          'Complete',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      )),
+                    style: ElevatedButton.styleFrom(
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        backgroundColor: Colors.blue),
+                    onPressed: () {
+                      Navigator.restorablePushNamed(
+                          context, FileFinalization.routeName);
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        'Review and complete',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
                 ),
               )
             ],

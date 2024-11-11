@@ -64,13 +64,13 @@ class _AutoScoutingState extends State<AutoScouting> {
               ),
             ),
           ),
-          Expanded(
-            child: ScoutingButtonRow(),
+          const Expanded(
+            child: ScoutingButtonRow(mode: 'auto'),
           ),
           const Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Placeholder()],
+              children: [Text("Pretend there's auto things here...")],
             ),
           ),
           Align(
